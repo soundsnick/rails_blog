@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="feed">
+    <% @articles.each do |article| %>
+      <div class="post">
+        <h3 class="post__title"><%= article.title %></h3>
+        <p class="post__paragraph"><%= article.text %></p>
+       	<a href="<%= article_path(article) %>">Show</a>
+       	<a href="<%= article_delete(article) %>">Destroy</a>
+      </div>
+    <% end %>
+  </div>
+</div>
