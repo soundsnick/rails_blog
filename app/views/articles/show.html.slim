@@ -1,0 +1,6 @@
+.view
+	.container
+		h3.post__title[style="cursor: text"] = @article.title
+		pre.post__paragraph = @article.text
+		.post__control	
+			= link_to 'Back', articles_path

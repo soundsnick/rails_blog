@@ -12,10 +12,21 @@ class ArticlesController < ApplicationController
 		@article = Article.new(params.require(:article).permit(:title, :text))
  
 		@article.save
-		redirect_to @article
+		redirect_to articles_path, notice: "Succesfully created"
+	end
+	def edit
+		id = params[:id]
+        @article = Article.find(id)
+        render :edit
 	end
 	def destroy
 		@article = Article.destroy(params[:id])
+		redirect_to articles_path, notice: "Succesfully deleted"
+	end
+	def update
+		@article = Article.find(params[:id])
+  		@article.update_attributes(params.require(:article).permit(:title, :text))
+  		redirect_to articles_path, notice: "Article updated"
 	end
 	private
 	  def article_params

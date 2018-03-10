@@ -1,0 +1,5 @@
+.container
+  = form_with scope: :article, url: articles_path, class: 'article-form', local: true do |form|
+      = form.text_field :title , placeholder: 'Title', class: 'article-form__field post__title'
+      = form.text_area :text, placeholder: 'Text', class: 'article-form__text post__paragraph'
+      = form.submit 'Create', class: 'article-form__button'

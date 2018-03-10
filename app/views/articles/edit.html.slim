@@ -1,0 +1,5 @@
+.container
+  = form_with scope: :article, url: article_path(@article), method: :patch, class: 'article-form', local: true do |form|
+      = form.text_field :title, placeholder: 'Title', class: 'article-form__field post__title', value: @article.title
+      = form.text_area :text, placeholder: 'Text', class: 'article-form__text post__paragraph', value: @article.text
+      = form.submit 'Save', class: 'article-form__button'

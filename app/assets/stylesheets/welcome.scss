@@ -1,9 +1,18 @@
+$header-height: 60px;
+$theme-color: #2196F3;
+$transition: 0.3s;
+
 body{
 	margin: 0;
 	padding: 0;
+	font-family: 'Gotham Pro';
+}
+a{
+	text-decoration: none;
+	color: inherit;
 }
 .header{
-	height: 60px;
+	height: $header-height;
 	background: #FFF;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
@@ -12,7 +21,124 @@ body{
 	margin: auto;
 	position: relative;
 }
-.post__title{
-	font-size: 1.5em;
-    margin-bottom: 5px;
+.feed{
+	padding: 30px 0;
+}
+.post{
+	margin-bottom: 30px;
+	&__title{
+	    font-size: 1.3em;
+	    color: rgba(0, 0, 0, 0.7);
+	    margin-bottom: 7px;
+	    margin-top: 0;
+	    font-weight: 300;
+	    cursor: pointer;
+	    &--wrapper{
+	    	display: inline-block;
+	    }
+	}
+	&__paragraph{
+	    line-height: 1.5;
+	    color: rgba(0, 0, 0, 0.7);
+	    font-family: inherit;
+	    white-space: pre-wrap;
+	    word-wrap: break-word;
+	    font-weight: 200;
+	    font-size: 16px;
+	    margin: 0;
+	}
+	&__control{
+		padding: 10px 0;
+		font-size: 11px;
+	    font-weight: 300;
+	    color: #3da5f2;
+	    text-transform: uppercase;
+	    &--delete{
+	    	color: #F44336
+	    }
+	}
+	&__empty{
+	    display: block;
+	    text-align: center;
+	    font-weight: 300;
+	    font-size: 14px;
+	    color: rgba(0,0,0,0.4);
+	}
+    a{	padding-right: 10px; }
+}
+.flex{
+	display: flex;
+}
+.logo{
+	line-height: 60px;
+    margin: 0;
+    color: #424242;
+    font-weight: 200;
+    font-size: 1.5em;
+}
+.header__navigation{
+	line-height: $header-height;
+	text-align: right;
+	flex: 1;
+	.item{
+		color: $theme-color;
+		font-weight: 200;
+    	font-size: 15px;
+	}
+}
+.article-form{
+	padding: 15px 0;
+	text-align: center;
+	&__field, &__text{
+		font-size: 15px;
+	    padding: 15px;
+	    border: 1px solid rgba(0,0,0,0.1);
+	    border-radius: 4px;
+	    box-shadow: 0 1px 1px rgba(0,0,0,0.09);
+	    display: block;
+	    font-family: inherit;
+	    width: 100%;
+	    cursor: text;
+	    outline: none;
+	    margin-bottom: 10px;
+	    transition: box-shadow $transition, border-color $transition;
+	    will-change: box-shadow, border-color;
+	    &:focus{
+	    	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	    	border-color: $theme-color;
+	    }
+	}
+	&__text{
+		max-width: 100%;
+	    min-width: 100%;
+	    max-height: 600px;
+	    height: 400px;
+	}
+	&__button{
+		color: #FFF;
+	    background: linear-gradient(to top, #1488e2, $theme-color);
+	    border: none;
+	    border-radius: 100px;
+	    padding: 12px 55px;
+	    text-shadow: 0 0 2px rgba(0,0,0,0.2);
+	    outline: none;
+	    cursor: pointer;
+	    font-size: 14px;
+	}
+}
+.notice{
+    display: block;
+    line-height: 22px;
+    margin-top: 10px;
+    background: #4CAF50;
+    text-align: center;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 300;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 15px;
+}
+.view{
+	padding-top: 30px;
 }
