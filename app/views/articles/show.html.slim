@@ -1,6 +1,8 @@
 .view
 	.container
+		article[data-id= @article.id]
 		h3.post__title[style="cursor: text"] = @article.title
+		time.post__date[datetime= @article.updated_at] = 'Edited: ' + String(@article.updated_at)
 		pre.post__paragraph = @article.text
 		.post__control	
 			= link_to 'Back', articles_path

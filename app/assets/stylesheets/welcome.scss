@@ -64,7 +64,16 @@ a{
 	    font-size: 14px;
 	    color: rgba(0,0,0,0.4);
 	}
-    a{	padding-right: 10px; }
+	&__date{
+		font-size: 12px;
+	    font-weight: 200;
+	    color: grey;
+	    font-family: inherit;
+	    padding-bottom: 15px;
+	    display: inline-block;
+	}
+   	a{	padding-right: 10px; }
+
 }
 .flex{
 	display: flex;
