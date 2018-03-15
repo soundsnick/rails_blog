@@ -5,11 +5,11 @@ class ArticlesController < ApplicationController
 
 	def new
 	end
-	
+
 	def show
 		@article = Article.find(params[:id])
 	end
-	
+
 	def create
 		@article = Article.new(params.require(:article).permit(:title, :text))
 		@article.save
@@ -17,23 +17,23 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		id = params[:id]
-        @article = Article.find(id)
+	id = params[:id]
+		@article = Article.find(id)
 	end
 
 	def destroy
 		@article = Article.destroy(params[:id])
 		redirect_to articles_path, notice: "Succesfully deleted"
-  end
+	end
 
 	def update
-		@article = Article.find(params[:id])
-  		@article.update_attributes(params.require(:article).permit(:title, :text))
-  		redirect_to articles_path, notice: "Article updated"
+	@article = Article.find(params[:id])
+		@article.update_attributes(params.require(:article).permit(:title, :text))
+		redirect_to articles_path, notice: "Article updated"
 	end
-	
+
 	private
 	def article_params
-	  params.require(:article).permit(:title, :text)
+		params.require(:article).permit(:title, :text)
 	end
 end
