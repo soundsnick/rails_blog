@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/search', to: 'search#index', as: :query
+  get '/search', to: 'articles#search', as: :query
   resources :articles
 
 

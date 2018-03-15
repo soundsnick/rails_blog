@@ -1,39 +1,45 @@
 class ArticlesController < ApplicationController
-	def index
-		@articles = Article.all
-	end
+  def index
+    @articles = Article.order(id: :desc)
+  end
 
-	def new
-	end
+  def new; end
 
-	def show
-		@article = Article.find(params[:id])
-	end
+  def show
+    @article = Article.find(params[:id])
+  end
 
-	def create
-		@article = Article.new(params.require(:article).permit(:title, :text))
-		@article.save
-		redirect_to articles_path, notice: "Succesfully created"
-	end
+  def create
+    @article = Article.new(article_params)
+    @article.save
+    redirect_to articles_path, notice: 'Succesfully created'
+  end
 
-	def edit
-	id = params[:id]
-		@article = Article.find(id)
-	end
+  def edit
+    id = params[:id]
+    @article = Article.find(id)
+  end
 
-	def destroy
-		@article = Article.destroy(params[:id])
-		redirect_to articles_path, notice: "Succesfully deleted"
-	end
+  def destroy
+    @article = Article.destroy(params[:id])
+    redirect_to articles_path, notice: 'Succesfully deleted'
+  end
 
-	def update
-	@article = Article.find(params[:id])
-		@article.update_attributes(params.require(:article).permit(:title, :text))
-		redirect_to articles_path, notice: "Article updated"
-	end
+  def search
+    @params = request.query_parameters
+    @articles = Article.search(params[:query])
+    render '/articles/index'
+  end
 
-	private
-	def article_params
-		params.require(:article).permit(:title, :text)
-	end
+  def update
+    @article = Article.find(params[:id])
+    @article.update_attributes(article_params)
+    redirect_to articles_path, notice: 'Article updated'
+  end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title, :text)
+  end
 end
