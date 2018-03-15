@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'articles/index'
-
+  get '/search', to: 'search#index', as: :query
   resources :articles
 
 

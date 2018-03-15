@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 	def destroy
 		@article = Article.destroy(params[:id])
 		redirect_to articles_path, notice: "Succesfully deleted"
-	end
+  end
 
 	def update
 		@article = Article.find(params[:id])
