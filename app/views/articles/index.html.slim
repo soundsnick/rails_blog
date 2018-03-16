@@ -7,9 +7,10 @@
 				a.post__title--wrapper[href=article_path(article)]
 					h3.post__title = article.title
 				p.post__paragraph = article.text.slice(0..255)+'...'
-				.post__control
-					= link_to 'Show', article_path(article)
-					= link_to 'Edit', edit_article_path(article)
-					= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'}, class: 'post__control--delete'
+                - if session[:current_user_email] && session[:current_user_email] == 'soundsnick@gmail.com'
+                  .post__control
+                      = link_to 'Show', article_path(article)
+                      = link_to 'Edit', edit_article_path(article)
+                      = link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'}, class: 'post__control--delete'
 		- if @articles.empty?
 			span.post__empty = 'No articles here'

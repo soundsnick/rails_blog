@@ -6,4 +6,10 @@ header.header
 		nav.header__navigation
           	form.form--search.search--wrapper[action="/search" method="get"]
                 input.search__field[type="text" placeholder="Поиск" name="query"]
-			= link_to 'New', new_article_path, class: 'item'
+            - if check_auth
+              span.item.profile-name = session[:current_user_email]
+              = link_to 'Log Out', logout_path, class: 'item'
+            - else
+              = link_to 'Sign In', loginPage_path, class: 'item'
+            - if check_admin
+			  = link_to 'New', new_article_path, class: 'item'

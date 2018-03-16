@@ -3,7 +3,13 @@ class ArticlesController < ApplicationController
     @articles = Article.order(id: :desc)
   end
 
-  def new; end
+  def new
+    if check_admin
+
+    else
+      redirect_to articles_path, notice: 'You are not an admin'
+    end
+  end
 
   def show
     @article = Article.find(params[:id])
@@ -16,13 +22,21 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    id = params[:id]
-    @article = Article.find(id)
+    if check_admin
+      id = params[:id]
+      @article = Article.find(id)
+    else
+      redirect_to articles_path, notice: 'You are not an admin'
+    end
   end
 
   def destroy
-    @article = Article.destroy(params[:id])
-    redirect_to articles_path, notice: 'Succesfully deleted'
+    if check_admin
+      @article = Article.destroy(params[:id])
+      redirect_to articles_path, notice: 'Succesfully deleted'
+    else
+      redirect_to articles_path, notice: 'You are not an admin'
+    end
   end
 
   def search

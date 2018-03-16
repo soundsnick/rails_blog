@@ -1,7 +1,23 @@
 $header-height: 60px;
 $theme-color: #2196F3;
 $transition: 0.3s;
-
+@mixin formField($border-color){
+  font-size: 15px;
+  padding: 15px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.09);
+  font-family: inherit;
+  cursor: text;
+  outline: none;
+  margin-bottom: 10px;
+  transition: box-shadow $transition, border-color $transition;
+  will-change: box-shadow, border-color;
+  &:focus{
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    border-color: $border-color;
+  }
+}
 body{
   margin: 0;
   padding: 0;
@@ -92,49 +108,36 @@ a{
   display: flex;
   justify-content: flex-end;
   .item{
-      color: $theme-color;
-      font-weight: 200;
-      font-size: 15px;
+    color: $theme-color;
+    font-weight: 200;
+    font-size: 15px;
+    padding: 0 7px;
   }
 }
 .article-form{
   padding: 15px 0;
   text-align: center;
   &__field, &__text{
-      font-size: 15px;
-      padding: 15px;
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 4px;
-      box-shadow: 0 1px 1px rgba(0,0,0,0.09);
-      display: block;
-      font-family: inherit;
-      width: 100%;
-      cursor: text;
-      outline: none;
-      margin-bottom: 10px;
-      transition: box-shadow $transition, border-color $transition;
-      will-change: box-shadow, border-color;
-      &:focus{
-          box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-          border-color: $theme-color;
-      }
+    display: block;
+    width: 100%;
+    @include formField($theme-color)
   }
   &__text{
-      max-width: 100%;
-      min-width: 100%;
-      max-height: 600px;
-      height: 400px;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 600px;
+    height: 400px;
   }
   &__button{
-      color: #FFF;
-      background: linear-gradient(to top, #1488e2, $theme-color);
-      border: none;
-      border-radius: 100px;
-      padding: 12px 55px;
-      text-shadow: 0 0 2px rgba(0,0,0,0.2);
-      outline: none;
-      cursor: pointer;
-      font-size: 14px;
+    color: #FFF;
+    background: linear-gradient(to top, #1488e2, $theme-color);
+    border: none;
+    border-radius: 100px;
+    padding: 12px 55px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.2);
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
   }
 }
 .notice{
@@ -149,6 +152,9 @@ a{
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   border-radius: 4px;
   padding: 15px;
+  &.error{
+    background: #F44336;
+  }
 }
 .view{
   padding-top: 30px;
@@ -175,5 +181,30 @@ a{
     font-weight: 300;
     color: rgba(0,0,0,0.6);
     font-size: 14px;
+  }
+}
+.authorisation--wrapper {
+  text-align: center;
+}
+.authorisation__form{
+  &--title{
+    font-size: 1.7em;
+    font-weight: 200;
+    color: #282828;
+  }
+  &--field{
+    display: block;
+    margin: auto;
+    max-width: 300px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.8);
+    @include formField($theme-color)
+  }
+  &--link{
+    font-weight: 300;
+    font-size: 12px;
+    color: $theme-color;
+    margin-top: 15px;
+    display: inline-block;
   }
 }

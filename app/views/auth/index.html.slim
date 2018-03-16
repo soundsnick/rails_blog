@@ -1,0 +1,13 @@
+.container
+  - if notice != nil
+    span.notice class=[params[:isError]] = notice
+  section.authorisation--wrapper
+    h3.authorisation__form--title = @title
+    = form_with scope: :login, url: login_path, id: 'authorisationForm', class: 'authorisation__form', method: @method, local: true do |form|
+      = form.text_field :email, placeholder: 'Email', class: 'authorisation__form--field'
+      = form.text_field :password, placeholder: 'Password', class: 'authorisation__form--field', type: 'password'
+      = form.submit @title, class: 'article-form__button authorisation__form--button'
+    - if @action == 'register'
+        = link_to 'Already have an account?', loginPage_path, class: 'authorisation__form--link'
+    - else
+        = link_to 'Sign Up', signupPage_path, class: 'authorisation__form--link'
